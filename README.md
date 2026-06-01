@@ -7,7 +7,20 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14+-4169E1?style=flat&logo=postgresql)](https://www.postgresql.org/)
 [![Ollama](https://img.shields.io/badge/Ollama-bge--m3-orange?style=flat)](https://ollama.com/)
 
-**AI数枢 DataHub** 是一个专为个人开发者和内容创作者打造的**智能化垂类私有数据库与一站式多维效率工作台**。项目巧妙结合了本地大语言模型与向量数据库，提供秒级的智能语义检索、知识连接，并聚合了从创意写作到日常运维等多维度的共计 **34 个高频效率工具模块**。
+**AI数枢 DataHub** 是一个专为个人开发者 and 内容创作者打造的**智能化垂类私有数据库与一站式多维效率工作台**。项目巧妙结合了本地大语言模型与向量数据库，提供秒级的智能语义检索、知识连接，并聚合了从创意写作到日常运维等多维度的共计 **34 个高频效率工具模块**。
+
+---
+
+## 🖥️ 界面预览 (Screenshots)
+
+### 1. 系统主页工作台 (Dashboard)
+![系统主页工作台](screenshots/dashboard.png)
+
+### 2. 自定义导航菜单 (Custom Menu Management)
+![自定义导航菜单](screenshots/menu_customization.png)
+
+### 3. 多项目进度管理 (Progress Management)
+![多项目进度管理](screenshots/progress.png)
 
 ---
 
