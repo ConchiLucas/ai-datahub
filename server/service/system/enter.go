@@ -1,0 +1,41 @@
+package system
+
+type ServiceGroup struct {
+	UserService
+	TaAiNoteService
+	TaDirectoryService
+	TaTagService
+	FilFileService
+	WebNavService
+	GalleryService
+	MusicService
+	AccountService
+	PlanService
+	BillingService
+	PromptService
+	CommandService
+	JsonService
+	MarkdownService
+	SoftwareService
+	TaDraftService
+	TaCodeService
+	ErrorService
+	AppErrorService
+	ChangelogService
+	GuidelineService
+	ScreenshotService
+	LearningService
+	TaSkillService
+	TaProductIdeaService
+	TaNovelService
+	TaNovelChapterService
+	TaMaterialService
+	EnglishWordService
+	DockerService
+	DeployService
+	TaScriptService
+	TaReleaseService
+	TaProgressService
+	PathService
+	PortService
+}

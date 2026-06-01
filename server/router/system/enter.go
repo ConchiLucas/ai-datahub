@@ -1,0 +1,43 @@
+package system
+
+type RouterGroup struct {
+	BaseRouter
+	AuthRouter
+	UserRouter
+	DirectoryRouter
+	AiNoteRouter
+	TagRouter
+	FileRouter
+	WebNavRouter
+	GalleryRouter
+	MusicRouter
+	AccountRouter
+	PlanRouter
+	BillingRouter
+	PromptRouter
+	CommandRouter
+	JsonRouter
+	MarkdownRouter
+	SoftwareRouter
+	TaDraftRouter
+	CodeRouter
+	ErrorRouter
+	AppErrorRouter
+	ChangelogRouter
+	GuidelineRouter
+	ScreenshotRouter
+	LearningRouter
+	TaSkillRouter
+	ProductIdeaRouter
+	TaNovelRouter
+	TaNovelChapterRouter
+	MaterialRouter
+	EnglishWordRouter
+	DockerRouter
+	DeployRouter
+	ScriptRouter
+	TaReleaseRouter
+	TaProgressRouter
+	TaPathRouter
+	PortRouter
+}

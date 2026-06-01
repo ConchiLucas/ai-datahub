@@ -1,0 +1,56 @@
+system:
+  env: 'public'
+  addr: 10001
+  db-type: 'pgsql'
+  oss-type: 'local'
+  router-prefix: '/api'
+
+pgsql:
+  path: 'host.docker.internal'
+  port: '5432'
+  config: 'sslmode=disable TimeZone=Asia/Shanghai'
+  db-name: 'notebook'
+  username: 'conchi'
+  password: 'conchi123456'
+  max-idle-conns: 10
+  max-open-conns: 100
+  log-mode: 'info'
+  log-zap: false
+
+jwt:
+  signing-key: 'ai-note-secret'
+  expires-time: '7d'
+  buffer-time: '1d'
+  issuer: 'conchi'
+
+zap:
+  level: 'info'
+  prefix: '[ai-note]'
+  format: 'console'
+  director: 'log'
+  encode-level: 'LowercaseColorLevelEncoder'
+  stacktrace-key: 'stacktrace'
+  max-age: 28
+  show-line: true
+  log-in-console: true
+
+redis:
+  db: 0
+  addr: 'host.docker.internal:6379'
+  password: ''
+
+cors:
+  mode: strict
+  whitelist:
+    - allow-origin: '*'
+      allow-methods: 'GET, POST, PUT, DELETE, OPTIONS'
+      allow-headers: '*'
+      expose-headers: '*'
+
+minio:  
+  endpoint: 'host.docker.internal:19100'
+  access-key-id: 'conchi'
+  secret-access-key: 'conchi123456'
+  use-ssl: false
+  bucket-name: 'ai-file-navigation'
+  base-path: ''

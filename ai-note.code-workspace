@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "name": "⚙️ Backend (Go)",
+      "path": "server"
+    },
+    {
+      "name": "🎨 Frontend (Web)",
+      "path": "web"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.git": true,
+      "**/.DS_Store": true,
+      "**/.idea": true
+    }
+  }
+}

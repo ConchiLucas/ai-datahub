@@ -1,0 +1,56 @@
+system:
+  env: 'public'  # 环境值
+  addr: 8888  # 端口值
+  db-type: 'pgsql'  # 数据库类型:mysql(默认)|sqlite|sqlserver|postgresql
+  oss-type: 'local'  # Oss类型
+  router-prefix: '/api'
+
+pgsql:
+  path: '127.0.0.1'
+  port: '5432'
+  config: 'sslmode=disable TimeZone=Asia/Shanghai'
+  db-name: 'notebook'
+  username: 'conchi'
+  password: 'conchi123456'
+  max-idle-conns: 10
+  max-open-conns: 100
+  log-mode: 'info'
+  log-zap: false
+
+jwt:
+  signing-key: 'ai-note-secret'
+  expires-time: '7d'
+  buffer-time: '1d'
+  issuer: 'conchi'
+
+zap:
+  level: 'info'
+  prefix: '[ai-note]'
+  format: 'console'
+  director: 'log'
+  encode-level: 'LowercaseColorLevelEncoder'
+  stacktrace-key: 'stacktrace'
+  max-age: 28
+  show-line: true
+  log-in-console: true
+
+redis:
+  db: 0
+  addr: '127.0.0.1:6379'
+  password: ''
+
+cors:
+  mode: strict
+  whitelist:
+    - allow-origin: '*'
+      allow-methods: 'GET, POST, PUT, DELETE, OPTIONS'
+      allow-headers: '*'
+      expose-headers: '*'
+
+minio:  
+  endpoint: '127.0.0.1:19100'
+  access-key-id: 'conchi'
+  secret-access-key: 'conchi123456'
+  use-ssl: false
+  bucket-name: 'ai-file-navigation'
+  base-path: ''

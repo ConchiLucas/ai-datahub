@@ -1,0 +1,10 @@
+services:
+  ai-file-navigation-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ai-file-navigation-web:1.0.0
+    container_name: ai-file-navigation-web
+    restart: unless-stopped
+    ports:
+      - "6001:80"
