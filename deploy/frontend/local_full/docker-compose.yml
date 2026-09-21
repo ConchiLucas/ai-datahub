@@ -1,0 +1,15 @@
+services:
+  ai-file-navigation-web:
+    build:
+      context: ../../..
+      dockerfile: deploy/frontend/local_full/Dockerfile
+    image: ai-file-navigation-web:1.0.0
+    container_name: ai-file-navigation-web
+    restart: "no"
+    ports:
+      - "6001:80"
+
+networks:
+  default:
+    name: vibedeploy-shared
+    external: true

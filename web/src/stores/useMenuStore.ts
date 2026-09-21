@@ -3,6 +3,7 @@ import { setUserSetting } from '@/api/auth';
 
 export interface MenuSetting {
   key: string;
+  isVisible?: boolean;
   isFavorite?: boolean;
 }
 
@@ -48,6 +49,14 @@ const DEFAULT_MENUS: MenuSetting[] = [
   { key: 'billing' },
 ];
 
+const normalizeMenuSetting = (setting: MenuSetting): MenuSetting => ({
+  ...setting,
+  isVisible: setting.isVisible !== undefined ? setting.isVisible : true,
+  isFavorite: setting.isFavorite || false,
+});
+
+const DEFAULT_MENU_SETTINGS = DEFAULT_MENUS.map(normalizeMenuSetting);
+
 export interface MenuStore {
   menuSettings: MenuSetting[];
   updateSettings: (newSettings: MenuSetting[]) => Promise<void>;
@@ -58,7 +67,7 @@ export interface MenuStore {
 let syncTimeout: ReturnType<typeof setTimeout> | null = null;
 
 export const useMenuStore = create<MenuStore>((set) => ({
-  menuSettings: [...DEFAULT_MENUS],
+  menuSettings: [...DEFAULT_MENU_SETTINGS],
   
   // Update UI immediately, then sync to backend
   updateSettings: async (newSettings: MenuSetting[]) => {
@@ -79,7 +88,7 @@ export const useMenuStore = create<MenuStore>((set) => ({
   
   hydrate: (originSetting: any) => {
     if (!originSetting || typeof originSetting !== 'object') {
-      set({ menuSettings: [...DEFAULT_MENUS] });
+      set({ menuSettings: [...DEFAULT_MENU_SETTINGS] });
       return;
     }
     
@@ -93,6 +102,8 @@ export const useMenuStore = create<MenuStore>((set) => ({
           const defaultItem = defaultMap.get(s.key);
           return {
             ...s,
+            // Older saved menu data did not include visibility; treat it as visible.
+            isVisible: s.isVisible !== undefined ? s.isVisible : true,
             // If isFavorite is missing in backend data, fall back to default
             isFavorite: s.isFavorite !== undefined ? s.isFavorite : (defaultItem?.isFavorite || false)
           };
@@ -100,19 +111,19 @@ export const useMenuStore = create<MenuStore>((set) => ({
 
         // 合并新增的菜单项（后端数据中没有的新模块自动追加到末尾）
         const existingKeys = new Set(mergedSettings.map((s: any) => s.key));
-        const newItems = DEFAULT_MENUS.filter(d => !existingKeys.has(d.key));
+        const newItems = DEFAULT_MENU_SETTINGS.filter(d => !existingKeys.has(d.key));
         set({ menuSettings: [...mergedSettings, ...newItems] });
         return;
       }
     }
     
-    set({ menuSettings: [...DEFAULT_MENUS] });
+    set({ menuSettings: [...DEFAULT_MENU_SETTINGS] });
   },
 
   resetToDefault: async () => {
-    set({ menuSettings: [...DEFAULT_MENUS] });
+    set({ menuSettings: [...DEFAULT_MENU_SETTINGS] });
     try {
-      await setUserSetting({ menu_manager: DEFAULT_MENUS });
+      await setUserSetting({ menu_manager: DEFAULT_MENU_SETTINGS });
     } catch (error) {
       console.error('Failed to reset menu setting:', error);
     }
