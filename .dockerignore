@@ -1,0 +1,5 @@
+
+# Private runtime configuration
+server/config*.local.yaml
+.env
+.env.local

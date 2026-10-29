@@ -3,3 +3,7 @@ log
 uploads
 server
 *.md
+# Private runtime configuration
+config*.local.yaml
+.env
+.env.local
