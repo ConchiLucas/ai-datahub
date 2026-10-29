@@ -9,6 +9,7 @@ services:
     ports:
       - "10001:10001"
     volumes:
+      - ../../../server/config.docker.local.yaml:/app/config.yaml:ro
       - ../../../server/log:/app/log
       - ../../../server/uploads:/app/uploads
 

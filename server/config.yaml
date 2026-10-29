@@ -1,3 +1,5 @@
+# Local settings: copy to config.local.yaml (gitignored).
+# PostgreSQL also accepts PGHOST, PGPORT, PGDATABASE, PGUSER, PGPASSWORD.
 system:
   env: 'public'  # 环境值
   addr: 8888  # 端口值
@@ -6,12 +8,12 @@ system:
   router-prefix: '/api'
 
 pgsql:
-  path: '127.0.0.1'
+  path: 127.0.0.1
   port: '5432'
   config: 'sslmode=disable TimeZone=Asia/Shanghai'
   db-name: 'notebook'
-  username: 'conchi'
-  password: 'conchi123456'
+  username: postgres
+  password: ""
   max-idle-conns: 10
   max-open-conns: 100
   log-mode: 'info'
